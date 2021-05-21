@@ -4,7 +4,7 @@ const TextRich = () => {
       <h1 className="font-display font-bold text-4xl text-center text-green-600 py-10">
        <span className="text-5xl uppercase text-green-500"> Ayuda al sector porcino </span> <br/> antes de que sea demasiado tarde
       </h1>
-      <img src="/chanchito.png" className="rounded object-cover w-full shadow-lg mb-10" />
+      <img src="/chanchito.webp" className="rounded object-cover w-full shadow-lg mb-10" />
       <p className="font-body text-justify pt-2 text-sm text-gray-700">
         Los ataques que reciben los productores de cerdos en España{" "}
         <b>reducen la esperanza de vida </b> de las granjas.

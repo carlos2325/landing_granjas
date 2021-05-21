@@ -51,7 +51,7 @@ const Footer = () => {
       <style jsx>
         {`
           .image {
-            background-image: url("background.jpg");
+            background-image: url("background.webp");
             background-size: cover;
             background-position: bottom;
           }
