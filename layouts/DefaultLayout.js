@@ -6,9 +6,6 @@ const DefaultLayout = ({ children }) => {
   return (
     <>
       <Head>
-        <script
-          src={`https://www.paypal.com/sdk/js?client-id=${ApiKey}&currency=EUR`}
-        ></script>
         <meta
           name="description"
           content="Los ataques que reciben los productores de cerdos en España reducen la esperanza de vida de las granjas.

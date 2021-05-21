@@ -13,6 +13,9 @@ const donate = () => {
     <>
       <Head>
         <title>Defendamos Nuestras Granjas | Donar</title>
+        <script
+          src={`https://www.paypal.com/sdk/js?client-id=${ApiKey}&currency=EUR`}
+        ></script>
       </Head>
       <div className="bg-gray-100 h-full py-10 flex justify-center w-full">
         <div className="flex justify-center max-w-screen-lg w-full gap-12 mt-10">
