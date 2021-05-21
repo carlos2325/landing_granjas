@@ -3,6 +3,7 @@ import { ArrowIcon, CancelIcon, CheckIcon, SSLIcon } from "../components/icons";
 import Link from "next/link";
 import FormCheckout from "../components/FormCheckout";
 import Paypal from "../components/Paypal";
+import Head from "next/head";
 
 const donate = () => {
   const [isCheckout, setCheckout] = useState(false);
