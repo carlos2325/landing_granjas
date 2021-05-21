@@ -80,7 +80,6 @@ const BasicForm = ({
   const Montos = [10, 25, 50, 75, 100, 250, 500];
 
   useEffect(() => {
-    console.log(props)
     values.amount = amount
   }, [amount])
 

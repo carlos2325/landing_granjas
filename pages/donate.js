@@ -52,7 +52,7 @@ const StepOne = ({ set, set2, checkout }) => {
         </Link>
       </div>
       <div className="py-4 flex gap-3 items-center">
-        <img src="chanchito.png" className="w-28 rounded h-auto object-cover" />
+        <img src="chanchito.webp" className="w-28 rounded h-auto object-cover" />
         <p className="font-body text-sm">
           <b className="text-md">¿Cuánto te gustaría donar? </b> Como colaborador de Defendamos nuestras
           granjas.com, nos aseguramos de que tu donación vaya directamente a

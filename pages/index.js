@@ -7,7 +7,6 @@ import TextRich from "../components/TextRich";
 
 const Home = (props) => {
   const {total, donations, signatures, totalSignatures} = props
-  console.log(donations)
   return (
     <>
     <Head>
