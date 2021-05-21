@@ -1,11 +1,16 @@
 import Link from "next/link";
+import { useEffect, useState } from "react";
+import { api } from "../api";
 
-const BlockDonate = () => {
+const BlockDonate = ({totalDonado}) => {
+  const [total, setTotal] = useState(totalDonado);
+
+
   return (
     <div className="h-max bg-white shadow w-full rounded-xl p-8">
         <span className="flex items-center gap-1">
       <h2 className="font-display text-xl font-semibold">
-        €35,770
+        € {totalDonado}
       </h2>
       <p className="font-body text-sm">recaudado de €100,000 </p>
       </span>
@@ -30,3 +35,4 @@ const BlockDonate = () => {
 };
 
 export default BlockDonate;
+

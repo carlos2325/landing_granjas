@@ -1,9 +1,15 @@
+import { useEffect } from "react";
+import { api } from "../api";
 import BlockDonate from "../components/BlockDonate";
 import BlockSignin from "../components/BlockSignin";
 import Footer from "../components/Footer";
 import TextRich from "../components/TextRich";
 
-const Home = () => {
+const Home = (props) => {
+  const {totalDonado} = props
+
+  console.log(totalDonado)
+  
   return (
     <>
     <div className="flex justify-center">
@@ -14,7 +20,7 @@ const Home = () => {
         <div className="w-1/3 pt-20 flex flex-col gap-20">
          
 
-          <BlockDonate />
+          <BlockDonate totalDonado={totalDonado}/>
           <BlockSignin />
         </div>
       </div>
@@ -24,3 +30,11 @@ const Home = () => {
 };
 
 export default Home;
+
+export async function getServerSideProps(context) {
+  const {data} = await api.totalDonations()
+  
+  return {
+    props: data, // will be passed to the page component as props
+  }
+}

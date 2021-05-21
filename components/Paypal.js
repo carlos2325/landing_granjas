@@ -1,7 +1,9 @@
-import { useEffect, useRef } from "react"
+import { useEffect, useRef, useState } from "react"
+import { api } from "../api"
 
-const Paypal = () => {
+const Paypal = ({values, set, setResult}) => {
     const paypalRef = useRef()
+
 
     useEffect(() => {
         window.paypal.Buttons({
@@ -10,31 +12,67 @@ const Paypal = () => {
                   intent: "CAPTURE",
                   purchase_units: [
                     {
-                      description: "Your description",
+                      description: 'Donativo "Defendamos nuestras granjas"',
                       amount: {
-                        currency_code: "INR",
-                        value: 500.0,
+                        currency_code: "EUR",
+                        value: values.amount,
                       },
                     },
+
                   ],
                 });
               },
               onApprove: async (data, actions) => {
-                const order = await actions.order.capture();
-                setPaid(true);
-                console.log(order);
+                try {
+                  await api.registerDonation(values)
+                } catch (error) {
+                  console.log(error)
+                } finally {
+                  setResult({result: "paid", data: data});
+                }
               },
               onError: (err) => {
-                //   setError(err),
+                  setResult({result: "error", data: err}),
                   console.error(err);
                 },
         }).render(paypalRef.current) 
     }, [])
 
+    const handleCheckout = (e) => {
+        e.preventDefault();
+        set(false);
+      };
+
     return (
-        <div>
-            <div ref={paypalRef}></div>
+        <>
+        <div className="border-b w-full py-2">
+            <p className="text-xl font-bold text-center w-full">
+             Enviar donación
+            </p>
         </div>
+        <div className="py-4 flex flex-col gap-3 items-center justify-center">
+            <span className="flex justify-between w-1/2 px-2 ">
+            <p className="font-display font-bold text-sm text-gray-700 ">Tu donación</p>
+            <p>{values.amount.toFixed(2)}€</p>
+            </span>
+            <span className="flex justify-between w-1/2 border-b border-gray-700 pb-1 px-2 ">
+            <p className="font-display font-bold text-sm text-gray-700 ">Comision por transacción</p>
+            <p>0.00 €</p>
+            </span>
+            <span className="flex justify-end w-1/2 gap-4 items-center" >
+                <p>TOTAL</p>
+                <p className="font-display text-xl font-bold text-gray-700">{values.amount.toFixed(2)}€</p>
+            </span>
+        </div>
+        <button
+          onClick={(e) => handleCheckout(e)}
+          className="focus:outline-none hover:bg-green-400 py-4 px-2 text-white bg-green-500 rounded-lg font-display font-bold text-lg transition"
+        >
+          Atras
+        </button>
+        <h3 className="w-full font-semibold text-md font-display text-center font-gray-700">Metodos de pago</h3>
+        <div ref={paypalRef}></div>      
+        </>
     )
 }
 
