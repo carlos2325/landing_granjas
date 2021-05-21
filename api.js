@@ -11,12 +11,12 @@ export const api = {
   },
 
   fetchDonations: async () => {
-    const res = await axios.get("http://localhost:3000/api/donation/donation?_limit='20'")
+    const res = await instance.get("/donation/donation?_limit='20'")
     return res
   },
 
   totalDonations: async () => {
-    const res = await axios.get("http://localhost:3000/api/donation/total")
+    const res = await instance.get("/donation/total")
     return res
   },
 
@@ -26,12 +26,12 @@ export const api = {
   },
 
   fetchSignatures: async () => {
-    const res = await axios.get("http://localhost:3000/api/signature/signature?_limit='20'")
+    const res = await axios.get("/signature/signature?_limit='20'")
     return res
   },
 
   totalSignatures: async () => {
-    const res = await axios.get("http://localhost:3000/api/signature/total")
+    const res = await axios.get("/signature/total")
     return res
   },
 
