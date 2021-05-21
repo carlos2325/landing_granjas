@@ -7,7 +7,7 @@ import TextRich from "../components/TextRich";
 
 const Home = (props) => {
   const {total, donations, signatures, totalSignatures} = props
-  
+  console.log(donations)
   return (
     <>
     <Head>
@@ -33,7 +33,7 @@ const Home = (props) => {
 
 export default Home;
 
-export async function getStaticProps(context) {
+export async function getServerSideProps(context) {
   const {data:total} = await api.totalDonations()
   const {data:donations} = await api.fetchDonations()
   const {data:signatures} = await api.fetchSignatures()
