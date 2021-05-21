@@ -29,11 +29,13 @@ const Home = (props) => {
 
 export default Home;
 
-export async function getServerSideProps(context) {
-  const {data:total} = await api.totalDonations()
-  const {data:donations} = await api.fetchDonations()
-  const {data:signatures} = await api.fetchSignatures()
-  const {data:totalSignatures} = await api.totalSignatures()
+export async function getServerSideProps({req, res}) {
+  const baseUrl = req ? `https://${req.headers.host}` : ''
+  const {data:total} = await api.totalDonations(baseUrl)
+  const {data:donations} = await api.fetchDonations(baseUrl)
+  const {data:signatures} = await api.fetchSignatures(baseUrl)
+  const {data:totalSignatures} = await api.totalSignatures(baseUrl)
+  
   
   return {
     props: {donations, total, signatures, totalSignatures}, // will be passed to the page component as props
