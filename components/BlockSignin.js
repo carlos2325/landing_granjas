@@ -6,6 +6,11 @@ const BlockSignin = ({signatures, totalSignatures}) => {
     const [state, setState] = useState(false)
     const [total, setTotal] = useState(totalSignatures)
     const meta = 10000
+
+    const Submit = (signal) => {
+      setState(signal)
+      setTotal(old => old + 1)
+    }
   return (
     <div className="h-max bg-white shadow w-full rounded-xl p-8">
       <div className="border-b w-full py-2 mb-6">
@@ -24,10 +29,10 @@ const BlockSignin = ({signatures, totalSignatures}) => {
       </div>
       <span className="flex justify-between w-full py-2">
       <p className="font-body text-xs">Firmas alcanzadas</p>
-      <p className="font-body text-xs">{(total / meta) * 100}%</p>
+      <p className="font-body text-xs">{((total / meta) * 100).toFixed(2)}%</p>
       </span>
       </div>
-      {state ? <Thanks/> : <FormFirma set={signal => setState(signal)} />}
+      {state ? <Thanks/> : <FormFirma set={signal => Submit(signal)} />}
       <h3 className="text-display font-semibold text-lg mt-4 pt-4 border-t text-green-500 text-center w-full">
        Firmas recientes
       </h3>

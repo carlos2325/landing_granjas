@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react"
+import { useEffect, useRef } from "react"
 import { api } from "../api"
 
 const Paypal = ({values, set, setResult}) => {
@@ -6,6 +6,8 @@ const Paypal = ({values, set, setResult}) => {
 
 
     useEffect(() => {
+      setTimeout(() => {
+        
         window.paypal.Buttons({
             createOrder: (data, actions) => {
                 return actions.order.create({
@@ -36,6 +38,7 @@ const Paypal = ({values, set, setResult}) => {
                   console.error(err);
                 },
         }).render(paypalRef.current) 
+      }, 500);
     }, [])
 
     const handleCheckout = (e) => {

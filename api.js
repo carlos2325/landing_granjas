@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const instance = axios.create({
-  baseURL: "https://landing-granjas.vercel.app",
+  baseURL: process.env.BASE_URL,
 });
 export const api = {
 
