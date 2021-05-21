@@ -10,8 +10,30 @@ export const api = {
     return res
   },
 
+  fetchDonations: async () => {
+    const res = await axios.get("http://localhost:3000/api/donation/donation?_limit='20'")
+    return res
+  },
+
   totalDonations: async () => {
     const res = await axios.get("http://localhost:3000/api/donation/total")
     return res
   },
+
+  registerSignature: async (values) => {
+    const res = await instance.post("signature/signature", null, {params: values})
+    return res
+  },
+
+  fetchSignatures: async () => {
+    const res = await axios.get("http://localhost:3000/api/signature/signature?_limit='20'")
+    return res
+  },
+
+  totalSignatures: async () => {
+    const res = await axios.get("http://localhost:3000/api/signature/total")
+    return res
+  },
+
+
 };

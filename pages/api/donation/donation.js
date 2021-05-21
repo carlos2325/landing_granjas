@@ -2,23 +2,27 @@ import { Mongoose } from "mongoose";
 import { ModeloDonation } from "../../../db/Models/schemaDonation";
 import conectorDB from "../../../utils/conectorDB";
 
-conectorDB()
+conectorDB();
 
 export default async function userHandler(req, res) {
-  const {query: { firstName, lastName, email, amount }, method} = req;
-  
-  
-  
+  const {
+    query: { firstName, lastName, email, amount, _limit },
+    method,
+  } = req;
+
   switch (method) {
     case "GET":
       // Get data from your database
-      const donations = await ModeloDonation.find()
-      const total = donations
-        .filter(item => item.amount)
-        .map(item => item.amount)
-        .reduce((a,b) => a + b, 0)
-      res.status(200).json({donaciones: donations});
-      
+      if (req.query._limit) {
+        const donations = await ModeloDonation.find()
+        .sort({ createdDateAt: -1 })
+        .limit(parseInt(_limit));
+        res.status(200).json({ donaciones: donations });
+      } else {
+        const donations = await ModeloDonation.find();
+        res.status(200).json({ donaciones: donations });
+      }
+
       break;
     case "POST":
       // Update or create data in your database
@@ -26,9 +30,9 @@ export default async function userHandler(req, res) {
         firstName: firstName,
         lastName: lastName,
         email: email,
-        amount: amount
-      })
-      await addDonation.save()
+        amount: amount,
+      });
+      await addDonation.save();
 
       res.status(200).json("listo");
       break;

@@ -8,9 +8,6 @@ const donate = () => {
   const [isCheckout, setCheckout] = useState(false);
   const [data, setData] = useState({});
 
-  useEffect(() => {
-    console.log(data);
-  }, [data]);
   return (
     <div className="bg-gray-100 h-full py-10 flex justify-center w-full">
       <div className="flex justify-center max-w-screen-lg w-full gap-12 mt-10">
@@ -36,7 +33,7 @@ const StepOne = ({ set, set2, checkout }) => {
     set(true);
   };
   return (
-    <div className="w-2/3 bg-white rounded-xl shadow-md p-8">
+    <div className="w-5/6 md:w-2/3 bg-white rounded-xl shadow-md p-8">
       <div className="border-b w-full py-2">
         <Link href="/">
           <p className="text-sm font-body flex gap-2 items-center cursor-pointer">
@@ -48,9 +45,9 @@ const StepOne = ({ set, set2, checkout }) => {
       <div className="py-4 flex gap-3 items-center">
         <img src="chanchito.png" className="w-28 rounded h-auto object-cover" />
         <p className="font-body text-sm">
-          Estás apoyando a
+          Estás apoyando a 
           <b className="text-green-500">
-            Ayuda al sector porcino antes de que sea demasiado tarde
+             Ayuda al sector porcino antes de que sea demasiado tarde
           </b>
         </p>
       </div>
@@ -76,14 +73,13 @@ const StepTwo = ({ set, values }) => {
   };
 
   return (
-    <div className="w-2/3 bg-white rounded-xl shadow-md p-8">
+    <div className="w-5/6 md:w-2/3 bg-white rounded-xl shadow-md p-8">
       {modules[result.result]}
     </div>
   );
 };
 
 const Paid = ({result}) => {
-    console.log(result)
   return (
     <div>
       <div className="border-b w-full py-2 mb-6">
