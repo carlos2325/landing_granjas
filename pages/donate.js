@@ -8,7 +8,7 @@ import Head from "next/head";
 const donate = () => {
   const [isCheckout, setCheckout] = useState(false);
   const [data, setData] = useState({});
-
+  const ApiKey = `AVVpIW9G4_srvTKl4RAzr_6EBx8oYKhjgNkvPcRFLJzc2OSAiBWhxz1FKIFoUmH497CO8gevENoraIlN`;
   return (
     <>
       <Head>
