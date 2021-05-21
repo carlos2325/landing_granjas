@@ -9,6 +9,10 @@ const donate = () => {
   const [data, setData] = useState({});
 
   return (
+    <>
+    <Head>
+      <title>Defendamos Nuestras Granjas | Donar</title>
+    </Head>
     <div className="bg-gray-100 h-full py-10 flex justify-center w-full">
       <div className="flex justify-center max-w-screen-lg w-full gap-12 mt-10">
         {isCheckout ? (
@@ -22,6 +26,7 @@ const donate = () => {
         )}
       </div>
     </div>
+    </>
   );
 };
 
