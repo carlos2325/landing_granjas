@@ -33,7 +33,7 @@ const Home = (props) => {
 
 export default Home;
 
-export async function getServerSideProps(context) {
+export async function getStaticProps(context) {
   const {data:total} = await api.totalDonations()
   const {data:donations} = await api.fetchDonations()
   const {data:signatures} = await api.fetchSignatures()

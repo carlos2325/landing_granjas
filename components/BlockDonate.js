@@ -48,15 +48,15 @@ const Donantes = ({ donations }) => {
       {users.map((user) => (
         <div
           key={user._id}
-          className="py-4 flex gap-4 items-center justify-between border-b w-full"
+          className="py-4 flex gap-6 items-center justify-start border-b w-full relative"
         >
           <img
             src="https://www.gravatar.com/avatar/00000000000000000000000000000000?d=mp&f=y"
             alt={user.firstName}
             className="w-9 h-9 rounded-full object cover"
           />
-          <p className="text-md font-body text-gray-600">{`${user.firstName} ${user.lastName}`}</p>
-          <p className="font-display text-md font-base text-green-500">{parseInt(user.amount).toFixed(2) ?? parseInt(0).toFixed(2)} €</p>
+          <p className="text-md text-left font-body text-gray-600">{`${user.firstName} ${user.lastName}`}</p>
+          <p className="font-display text-md font-base text-green-500 absolute right-1 top-1/3">€ {parseInt(user.amount).toFixed(2) ?? parseInt(0).toFixed(2)} </p>
         </div>
       ))}
       <style jsx global>

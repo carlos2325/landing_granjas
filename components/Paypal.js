@@ -48,12 +48,12 @@ const Paypal = ({values, set, setResult}) => {
 
     return (
         <>
-        <div className="border-b w-full py-2">
+        <div className="border-b w-full pb-4 pt-2">
             <p className="text-xl font-bold text-center w-full">
              Enviar donación
             </p>
         </div>
-        <div className="py-4 flex flex-col gap-3 items-center justify-center">
+        <div className="py-10 flex flex-col gap-3 w-full items-center justify-center">
             <span className="flex justify-between w-4/5 md:w-1/2 px-2 ">
             <p className="font-display font-bold text-sm text-gray-700 ">Tu donación</p>
             <p>{values.amount.toFixed(2)}€</p>
@@ -67,6 +67,7 @@ const Paypal = ({values, set, setResult}) => {
                 <p className="font-display text-xl font-bold text-gray-700">{values.amount.toFixed(2)}€</p>
             </span>
         </div>
+        <div className="pt-10 w-full">
         <h3 className="w-full font-semibold text-md font-display text-center font-gray-700">Metodos de pago</h3>
         <div ref={paypalRef}></div>      
         <button
@@ -75,6 +76,7 @@ const Paypal = ({values, set, setResult}) => {
         >
           Ir a atrás
         </button>
+        </div>
         </>
     )
 }
